@@ -8,15 +8,22 @@ export const fetchAllPrices = async (): Promise<CryptoPrice[]> => {
     return response.data;
 };
 
+export const fetchTicker24h = async (symbol: string): Promise<any> => {
+    const response = await axios.get(`${BINANCE_API}/ticker/24hr`, {
+        params: { symbol },
+    });
+    return response.data;
+}
+
 //for the history of a crypto
 export const fetchKlineData = async ( 
     symbol: string,
     interval: string = '1d',
     limit: number = 90,
-): Promise<KlineData[]> => {
+): Promise<any[]> => {
     const response = await axios.get(`${BINANCE_API}/klines`, {
         params: {symbol, interval, limit},
-    })
+    });
     return response.data.map((item: any) => ({
         openTime: item[0],
         open: item[1],

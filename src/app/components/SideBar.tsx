@@ -17,8 +17,9 @@ interface SideBarProps {
 
 const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClose }: SideBarProps) => {
     const [favorites, setFavorites] = useState<string[]>([]);
+    const [isDesktop, setIsDesktop] = useState(false);
 
-    const { data: prices, isLoading } = useQuery({
+    const { data: prices, isLoading, error } = useQuery({
         queryKey: ['prices'],
         queryFn: fetchAllPrices,
         refetchInterval: 30000, // Refetch every 30 seconds
@@ -28,6 +29,14 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
     useEffect(() => {
         const saved = localStorage.getItem('cryptoFavorites');
         if(saved) setFavorites(JSON.parse(saved));
+    }, []);
+
+    // track viewport size so sidebar auto-opens on desktop and closes on mobile
+    useEffect(() => {
+        const update = () => setIsDesktop(typeof window !== 'undefined' && window.innerWidth >= 768);
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
     }, []);
 
     //save favorites to localStorage
@@ -60,11 +69,25 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
                     onClose();
                 }
             }}
-            className={`p-3 rounded-lg cursor-pointer transition-colors flex items-center justify-between ${
-                selectedCrypto === crypto.symbol
-                ? 'bg-blue-100 dark:bg-blue-900/30'
-                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-            }`}
+            className={`
+                group relative
+                flex items-center justify-between
+                rounded-lg px-3 py-2.5
+                cursor-pointer
+                transition-all duration-150
+                ring-1 ring-transparent
+                ${
+                    selectedCrypto === crypto.symbol
+                    ? `
+                        bg-blue-100/80 dark:bg-blue-900/30
+                        ring-blue-300 dark:ring-blue-700/60
+                    `
+                    : `
+                        hover:bg-gray-100/80 dark:hover:bg-gray-800/70
+                        hover:ring-gray-200 dark:hover:ring-gray-700/60
+                    `
+                }
+            `}
         >
             <div>
                 <p className="font-semibold text-gray-900 dark:text-gray-400">
@@ -89,11 +112,13 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
         </motion.div>
     );
 
+    const visible = isDesktop || isOpen;
+
     return(
         <>
             {/* Overlay for mobile when sidebar is open */}
             <AnimatePresence>
-                {isOpen && (
+                {!isDesktop && isOpen && (
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -107,7 +132,7 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
                 {/* Sidebar content */}
             <motion.aside
                 initial={false}
-                animate={{ x: isOpen ? 0 : -320 }}
+                animate={{ x: visible ? 0 : -320 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                 className={`fixed left-0 top-16 bottom-0 w-80 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-800 z-50 overflow-y-auto md:relative md:translate-x-0 md:top-0`}
             >
@@ -128,6 +153,8 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
                             <div className="space-y-2">
                                 {favoritedPrices.map(renderCryptoItem)}
                             </div>
+
+                            <div className="h-px bg-gray-200 dark:bg-gray-700 my-4"/>
                         </div>                    
                     )}
 
@@ -142,6 +169,14 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
                                 <div key={i} className="h-16 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"/>
                             ))}
                         </div>
+                    ) : error ? (
+                        <p className="text-center text-red-600">
+                            Error loading data.
+                        </p>
+                    ) : filteredPrices.length === 0  && !isLoading ? (
+                        <p className="text-center text-gray-500 dark:text-gray-400">
+                            No cryptocurrencies found.
+                        </p>
                     ) : (
                         <div className="space-y-2">
                             {nonFavoritedPrices.slice(0, 50).map(renderCryptoItem)}
@@ -151,6 +186,6 @@ const SideBar = ({ selectedCrypto, setSelectedCrypto, searchQuery, isOpen, onClo
             </motion.aside>
         </>
     )
-}
+};
 
 export default SideBar;
