@@ -1,6 +1,7 @@
 # Crypto Market Analyzer 📈
 A modern web application for tracking and analyzing cryptocurrency prices in real time using Binance's public API.
 
+- Url: [Click](https://crypto-market-sepia.vercel.app/)
 - Repository: [Click](https://github.com/Alex0-8/Crypto_Market)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
@@ -86,4 +87,4 @@ I always reviewed and adapted the generated code to ensure quality and correct t
 - [x] Interactive buy/sell simulator
 - [x] Animations with Framer Motion
 - [x] Dark mode toggle
-- [ ] Deployment to Vercel
+- [x] Deployment to Vercel
