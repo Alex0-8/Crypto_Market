@@ -31,6 +31,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - Theme Manegement: next-themes
 - Data Fetching & Caching: TanStack Query (@tanstack/react-query)
 - Charts: Recharts
+- Icons: lucid-react
 - Animations: Framer Motion
 - Deployment: Vercel (pending)
 
@@ -53,9 +54,17 @@ I chose this structure to improve reusability and scalability.
   - Ability to mark cryptocurrencies as favorites
   - Favorites are displayed at the top of the list
   - Mobile-friendly behavior with overlay and animations
-- Main panel
-  - Currently a placeholder
-  - Will be replaced with detailed crypto information and charts
+  - Improved search state handling: now shows error and 'no results found' states (*new*)
+  - Fixed a bug where the sidebar wouldn't reopen automatically when switching from mobile to desktop view — now it opens correctly on larger screens (*new*)
+- Main panel (*new*)
+  - Detailed view of the selected cryptocurrency  
+  - Historical price chart for the last 90 days using Recharts (my first time using this library — it was challenging but rewarding)  
+  - Interactive buy/sell simulator  
+  - Transaction history persisted in localStorage
+ 
+## Additional Notes
+
+I recently started using the built-in AI assistant in VS Code, and it has been surprisingly helpful for predictable code patterns and catching small bugs. That said, human review is still essential to ensure everything works as expected.
 
 # Use of AI in Development
 I used Grok throughout the project:
@@ -73,8 +82,8 @@ I always reviewed and adapted the generated code to ensure quality and correct t
 - [x] Fetch prices from Binance API
 - [x] Responsive layout with sidebar + main panel
 - [x] Crypto list with searchbar
-- [ ] Detail panel with historical chart
-- [ ] Interactive buy/sell simulator
+- [x] Detail panel with historical chart
+- [x] Interactive buy/sell simulator
 - [x] Animations with Framer Motion
 - [x] Dark mode toggle
 - [ ] Deployment to Vercel
