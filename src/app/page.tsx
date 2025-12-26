@@ -7,8 +7,8 @@ import CryptoDetails from "./components/CryptoDetails";
 
 export default function Home() {
   const [selectedCrypto, setSelectedCrypto] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('')
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">

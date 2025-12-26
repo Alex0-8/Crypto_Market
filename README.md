@@ -55,13 +55,17 @@ I chose this structure to improve reusability and scalability.
   - Ability to mark cryptocurrencies as favorites
   - Favorites are displayed at the top of the list
   - Mobile-friendly behavior with overlay and animations
-  - Improved search state handling: now shows error and 'no results found' states (*new*)
-  - Fixed a bug where the sidebar wouldn't reopen automatically when switching from mobile to desktop view — now it opens correctly on larger screens (*new*)
-- Main panel (*new*)
+  - Improved search state handling: now shows error and 'no results found' states
+  - Fixed a bug where the sidebar wouldn't reopen automatically when switching from mobile to desktop view — now it opens correctly on larger screens
+- Main panel
   - Detailed view of the selected cryptocurrency  
   - Historical price chart for the last 90 days using Recharts (my first time using this library — it was challenging but rewarding)  
   - Interactive buy/sell simulator  
   - Transaction history persisted in localStorage
+- Testing (*new*)
+  - Added a few unit tests using Jest and React Testing Library
+  - Initially challenging due to working with a recent version of Jest alongside TypeScript and Next.js
+  - After reviewing the official Jest documentation and with support from the built-in VS Code AI assistant, I was able to properly configure the environment and write stable component tests
  
 ## Additional Notes
 
@@ -88,3 +92,4 @@ I always reviewed and adapted the generated code to ensure quality and correct t
 - [x] Animations with Framer Motion
 - [x] Dark mode toggle
 - [x] Deployment to Vercel
+- [x] Unit tests using Jest and React Testing Library

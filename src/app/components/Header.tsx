@@ -34,6 +34,7 @@ const Header = ({ searchQuery, setSearchQuery, onMenuToggle }: HeaderProps) => {
                         <button
                             onClick={onMenuToggle}
                             className="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            aria-label="menu"
                         >
                             <Menu  className="h-6 w-6"/>
                         </button>
