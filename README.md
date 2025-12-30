@@ -34,7 +34,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - Charts: Recharts
 - Icons: lucid-react
 - Animations: Framer Motion
-- Deployment: Vercel (pending)
+- Deployment: Vercel
 
 # Architecture and Folder Structure
 I chose this structure to improve reusability and scalability.
