@@ -16,6 +16,10 @@
 
 - 🔗 **Demo en vivo** → [Crypto Market](https://crypto-market-sepia.vercel.app/)
 
+<div align="center">
+  <img width="228" height="auto" alt="CryptoMarket_mobile" src="https://github.com/user-attachments/assets/b29b7363-ef5b-4a02-9793-3f91612057d6" />
+  <img width="500" height="auto" alt="Crypto Market_PC" src="https://github.com/user-attachments/assets/f46b5c40-261e-4efe-bfdd-e8ef254dc8c9" />
+</div>
 
 El proyecto fue inicializado con [Next.js](https://nextjs.org) mediante `create-next-app` y utiliza el router de la carpeta `app`.
 
@@ -93,7 +97,7 @@ Comandos útiles
 
 # 📄 Licencia
 Siéntete libre de usar, modificar y aprender de este proyecto.
-Última actualización importante: 1 de Marzo de 2026
+Última actualización: 1 de Marzo de 2026
 ¡Gracias por explorar Crypto Market Analyzer!
 
 ---
@@ -115,6 +119,11 @@ Siéntete libre de usar, modificar y aprender de este proyecto.
 **Crypto Market Analyzer** is a modern web application for tracking and analyzing cryptocurrency prices in real time using Binance’s public API.
 
 - 🔗 **Live demo** → [https://crypto-market-sepia.vercel.app/](https://crypto-market-sepia.vercel.app/)
+
+<div align="center">
+  <img width="228" height="auto" alt="CryptoMarket_mobile" src="https://github.com/user-attachments/assets/b29b7363-ef5b-4a02-9793-3f91612057d6" />
+  <img width="500" height="auto" alt="Crypto Market_PC" src="https://github.com/user-attachments/assets/f46b5c40-261e-4efe-bfdd-e8ef254dc8c9" />
+</div>
 
 This project was bootstrapped with Next.js (`create-next-app`) and uses the App Router.
 
@@ -192,5 +201,5 @@ Useful commands
 
 # 📄 License
 Feel free to use, modify, and learn from this project.
-Last important update: March 1, 2026
+Last update: March 1, 2026
 Thank you for exploring Crypto Market Analyzer!
